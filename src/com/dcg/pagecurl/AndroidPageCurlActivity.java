@@ -3,9 +3,12 @@ package com.dcg.pagecurl;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.Window;
-import android.view.WindowManager;
 
+/**
+ * Sample activity used to demotrate the use of the page curl view
+ * @author Moritz 'Moss' Wundke (b.thax.dcg@gmail.com)
+ *
+ */
 public class AndroidPageCurlActivity extends Activity {
 
 	
@@ -13,16 +16,13 @@ public class AndroidPageCurlActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	
+    	/*
     	// Run as full-screen
         requestWindowFeature(Window.FEATURE_NO_TITLE);  
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,   
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-	    PageCurlView pageCurlView = new PageCurlView(this, true);
-	    
-	    // If you would like to see the on-screen debug info
-	    pageCurlView.bDrawDebug = false;
-	    this.setContentView(pageCurlView);
+        /**/
+    	this.setContentView(R.layout.main);
     }
     
     @Override
