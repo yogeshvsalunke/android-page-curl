@@ -80,6 +80,9 @@ public class PageCurlView extends View {
 	/** Our points used to define the current clipping paths in our draw call */
 	private Vector2D mA, mB, mC, mD, mE, mF, mOldF, mOrigin;
 	
+	/** Left and top offset to be applied when drawing */
+	private int mCurrentLeft, mCurrentTop;
+	
 	/** If false no draw call has been done */
 	private boolean bViewDrawn;
 	
@@ -479,8 +482,10 @@ public class PageCurlView extends View {
 	 */
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-		setMeasuredDimension(measureWidth(widthMeasureSpec),
-				measureHeight(heightMeasureSpec));
+		int finalWidth, finalHeight;
+		finalWidth = measureWidth(widthMeasureSpec);
+		finalHeight = measureHeight(heightMeasureSpec);
+		setMeasuredDimension(finalWidth, finalHeight);
 	}
 
 	/**
@@ -867,6 +872,12 @@ public class PageCurlView extends View {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
+		// Always refresh offsets
+		mCurrentLeft = getLeft();
+		mCurrentTop = getTop();
+		
+		// Translate the whole canvas
+		//canvas.translate(mCurrentLeft, mCurrentTop);
 		
 		// We need to initialize all size data when we first draw the view
 		if ( !bViewDrawn ) {
@@ -908,6 +919,9 @@ public class PageCurlView extends View {
 			bBlockTouchInput = false;
 			bEnableInputAfterDraw = false;
 		}
+		
+		// Restore canvas
+		//canvas.restore();
 	}
 	
 	/**
@@ -958,6 +972,9 @@ public class PageCurlView extends View {
 	 */
 	private void drawBackground( Canvas canvas, Rect rect, Paint paint ) {
 		Path mask = createBackgroundPath();
+		
+		// Save current canvas so we do not mess it up
+		canvas.save();
 		canvas.clipPath(mask);
 		canvas.drawBitmap(mBackground, null, rect, paint);
 		

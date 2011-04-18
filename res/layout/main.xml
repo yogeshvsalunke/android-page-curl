@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:dcg="http://schemas.android.com/apk/res/com.dcg.pagecurl"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-	<com.dcg.pagecurl.PageCurlView
-		android:background="@drawable/page1"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		dcg:enableDebugMode="true"
-		dcg:curlSpeed="30" 
-		dcg:curlMode="Dynamic"/>
-</LinearLayout>
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:layout_weight="1"
+		android:scrollbars="vertical" />
+	<TextView android:id="@android:id/empty" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:text="Empty List"/>
+</LinearLayout> 

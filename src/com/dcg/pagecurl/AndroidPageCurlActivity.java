@@ -1,6 +1,6 @@
 package com.dcg.pagecurl;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
@@ -9,7 +9,7 @@ import android.os.Bundle;
  * @author Moritz 'Moss' Wundke (b.thax.dcg@gmail.com)
  *
  */
-public class AndroidPageCurlActivity extends Activity {
+public class AndroidPageCurlActivity extends ListActivity {
 
 	
     @Override
@@ -23,6 +23,9 @@ public class AndroidPageCurlActivity extends Activity {
                                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         /**/
     	this.setContentView(R.layout.main);
+    	
+    	// Set the test adapter
+    	setListAdapter(new PageAdapter(this));
     }
     
     @Override
